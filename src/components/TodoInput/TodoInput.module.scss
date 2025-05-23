@@ -1,0 +1,96 @@
+.inputContainer {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #ededed;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.inputHeader {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  color: #e6e6e6;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.4s ease, color 0.2s ease;
+  transform: rotate(-90deg);
+  cursor: pointer;
+
+  &:hover {
+    color: #b3b3b3;
+  }
+
+  &.expanded {
+    transform: rotate(0deg);
+    color: #737373;
+  }
+}
+
+.inputField {
+  flex: 1;
+  padding: 5px 0;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  color: #4d4d4d;
+  font-weight: 400;
+  background: transparent;
+
+  &::placeholder {
+    font-style: italic;
+    color: #e6e6e6;
+    font-weight: 300;
+  }
+}
+
+.todoForm {
+  display: flex;
+  padding: 0 16px 16px;
+}
+
+.addButton {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+  
+  &:hover {
+    background-color: #4cae4c;
+  }
+}
+
+// Dark theme styles
+:global(body.dark) .inputContainer {
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #404040;
+}
+
+:global(body.dark) .inputField {
+  color: #e0e0e0;
+  
+  &::placeholder {
+    color: #666;
+  }
+}
+
+:global(body.dark) .arrow {
+  color: #666;
+  
+  &:hover {
+    color: #999;
+  }
+  
+  &.expanded {
+    color: #ccc;
+  }
+} 

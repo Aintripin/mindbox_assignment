@@ -1,0 +1,114 @@
+.todoItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 16px;
+  border-bottom: 1px solid #ededed;
+  position: relative;
+}
+
+.checkboxContainer {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: #bbb;
+  }
+
+  &.completed {
+    border-color: #bbb;
+  }
+}
+
+.checkmark {
+  color: #5cb85c;
+  font-size: 16px;
+}
+
+.todoText {
+  flex: 1;
+  font-size: 24px;
+  color: #4d4d4d;
+  font-weight: 400;
+  line-height: 1.2;
+  cursor: pointer;
+  word-break: break-all;
+  
+  &.completed {
+    text-decoration: line-through;
+    color: #d9d9d9;
+  }
+}
+
+.editInput {
+  flex: 1;
+  font-size: 24px;
+  color: #4d4d4d;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 6px 10px 6px 6px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  margin-right: 10px;
+}
+
+.deleteButton {
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-right: 10px;
+  transition: color 0.2s ease-out, opacity 0.2s ease-out;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  line-height: 1;
+  
+  &:hover {
+    color: #af5b5e;
+  }
+}
+
+.todoItem:hover .deleteButton {
+  opacity: 1;
+  visibility: visible;
+}
+
+// Dark theme styles
+:global(body.dark) .todoItem {
+  border-bottom: 1px solid #404040;
+}
+
+:global(body.dark) .todoText {
+  color: #e0e0e0;
+  
+  &.completed {
+    color: #666;
+  }
+}
+
+:global(body.dark) .editInput {
+  color: #e0e0e0;
+  background-color: #404040;
+  border: 1px solid #555;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+:global(body.dark) .checkboxContainer {
+  border: 1px solid #555;
+  
+  &:hover {
+    border-color: #777;
+  }
+  
+  &.completed {
+    border-color: #777;
+  }
+} 

@@ -1,0 +1,106 @@
+.todoListContainer {
+  width: 100%;
+  animation: slideDown 0.4s ease-out;
+  opacity: 1;
+  overflow: visible;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: scaleY(1);
+  }
+}
+
+.todos {
+  width: 100%;
+  max-height: 100%;
+  overflow: visible;
+}
+
+.todoFooter {
+  padding: 10px 16px;
+  color: #777;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ededed;
+  background-color: white;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+.count {
+  color: #777;
+}
+
+.filterButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.filterButton {
+  margin: 0 5px;
+  padding: 3px 7px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 3px;
+  color: #777;
+  
+  &:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+  }
+  
+  &.active {
+    border-color: rgba(175, 47, 47, 0.2);
+  }
+}
+
+.clearCompleted {
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 14px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Dark theme styles
+:global(body.dark) .todoFooter {
+  background-color: #2d2d2d;
+  border-top: 1px solid #404040;
+  color: #ccc;
+}
+
+:global(body.dark) .count {
+  color: #ccc;
+}
+
+:global(body.dark) .filterButton {
+  color: #ccc;
+  
+  &:hover {
+    border-color: rgba(175, 47, 47, 0.3);
+  }
+  
+  &.active {
+    border-color: rgba(175, 47, 47, 0.4);
+  }
+}
+
+:global(body.dark) .clearCompleted {
+  color: #ccc;
+} 

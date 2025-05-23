@@ -1,0 +1,208 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  color: rgba(175, 47, 47, 0.15);
+  font-size: 80px;
+  font-weight: 100;
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 2px;
+  font-family: 'Exo 2', sans-serif;
+  text-rendering: optimizeLegibility;
+  transition: all 0.5s ease;
+}
+
+.todoContainer {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 25px 50px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+}
+
+.listContainer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  
+  &.expanded {
+    max-height: calc(80vh - 150px);
+    overflow-y: auto; /* Enable scrolling if content exceeds viewport height */
+    
+    /* Custom scrollbar styling */
+    scrollbar-width: auto;
+    scrollbar-color: rgba(175, 47, 47, 0.2) rgba(0, 0, 0, 0.05);
+    
+    /* Webkit browsers (Chrome, Safari, newer Edge) */
+    &::-webkit-scrollbar {
+      width: 16px;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::-webkit-scrollbar {
+      width: 20px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(175, 47, 47, 0.2);
+      border-radius: 10px;
+      border: 3px solid rgba(0, 0, 0, 0.05);
+      background-clip: padding-box;
+      transition: background 0.3s ease, border-width 0.3s ease;
+      
+      &:hover {
+        background: rgba(175, 47, 47, 0.4);
+        border-width: 2px;
+      }
+    }
+  }
+}
+
+.info {
+  margin: 65px auto 0;
+  color: #bfbfbf;
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+  
+  p {
+    line-height: 1.4;
+  }
+}
+
+// Dark theme styles
+:global(body.dark) .todoContainer {
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 25px 50px rgba(0, 0, 0, 0.3);
+
+  &::before {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4), 0 8px 0 -3px #1a1a1a, 0 9px 1px -3px rgba(0, 0, 0, 0.4), 0 16px 0 -6px #1a1a1a, 0 17px 2px -6px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:global(body.dark) .info {
+  color: #666;
+}
+
+// Neon glow animation keyframes
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #ff6b6b,
+      0 0 10px #ff6b6b,
+      0 0 15px #ff6b6b,
+      0 0 20px #ff4757,
+      0 0 35px #ff4757,
+      0 0 40px #ff4757;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px #ff6b6b,
+      0 0 5px #ff6b6b,
+      0 0 8px #ff6b6b,
+      0 0 12px #ff4757,
+      0 0 25px #ff4757,
+      0 0 30px #ff4757;
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 98%, 100% { 
+    filter: brightness(1);
+    opacity: 1;
+  }
+  99% { 
+    filter: brightness(0.95);
+    opacity: 0.98;
+  }
+}
+
+@keyframes neonTrace {
+  0% {
+    text-shadow: none;
+    color: rgba(255, 107, 107, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 10px #ff6b6b,
+      0 0 20px #ff6b6b,
+      0 0 30px #ff6b6b,
+      0 0 40px #ff4757;
+    color: #ff6b6b;
+  }
+  100% {
+    text-shadow: 
+      0 0 5px #ff6b6b,
+      0 0 10px #ff6b6b,
+      0 0 15px #ff6b6b,
+      0 0 20px #ff4757,
+      0 0 35px #ff4757,
+      0 0 40px #ff4757;
+    color: #ff6b6b;
+  }
+}
+
+// Dark theme neon title
+:global(body.dark) .title {
+  color: #ff6b6b;
+  font-size: 100px;
+  font-weight: 200;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 5px #ff6b6b,
+    0 0 10px #ff6b6b,
+    0 0 15px #ff6b6b,
+    0 0 20px #ff4757,
+    0 0 35px #ff4757,
+    0 0 40px #ff4757;
+  animation: neonPulse 2s ease-in-out infinite alternate, neonFlicker 0.3s ease-in-out infinite;
+  
+  &:hover {
+    animation-duration: 1s, 0.15s;
+    transform: scale(1.05);
+    text-shadow: 
+      0 0 10px #ff6b6b,
+      0 0 20px #ff6b6b,
+      0 0 30px #ff6b6b,
+      0 0 40px #ff4757,
+      0 0 70px #ff4757,
+      0 0 80px #ff4757;
+  }
+}
+
+// Individual letter styling for pulsing effect
+:global(body.dark) .titleLetter {
+  display: inline-block;
+  animation: neonTrace 0.8s ease-out forwards, neonFlicker 0.3s ease-in-out infinite 0.8s;
+  
+  &:nth-child(1) { animation-delay: 0s, 0.8s; }
+  &:nth-child(2) { animation-delay: 0.15s, 0.95s; }
+  &:nth-child(3) { animation-delay: 0.3s, 1.1s; }
+  &:nth-child(4) { animation-delay: 0.45s, 1.25s; }
+  &:nth-child(5) { animation-delay: 0.6s, 1.4s; }
+} 
